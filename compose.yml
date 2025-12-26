@@ -1,0 +1,29 @@
+services:
+  caddy:
+    image: caddy:2.10-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./caddy:/etc/caddy
+      - ./static:/srv
+      - caddy_data:/data
+      - caddy_config:/config
+
+  wakapi:
+    image: ghcr.io/muety/wakapi:latest
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - WAKAPI_PASSWORD_SALT=${WAKAPI_PASSWORD_SALT}
+    volumes:
+      - wakapi_data:/data
+
+volumes:
+  caddy_data:
+  caddy_config:
+  wakapi_data:

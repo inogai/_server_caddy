@@ -1,0 +1,7 @@
+inogai.com {
+  redir https://www.{host}{uri}
+}
+
+wakapi.inogai.com {
+  reverse_proxy wakapi:3000
+}
