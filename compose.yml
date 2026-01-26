@@ -23,7 +23,22 @@ services:
     volumes:
       - wakapi_data:/data
 
+  remark42:
+    image: ghcr.io/umputun/remark42:latest
+    restart: unless-stopped
+    container_name: "remark42"
+    environment:
+      - REMARK_URL=https://remark42.inogai.com
+      - SITE=remark
+      - SECRET=${REMARK42_SECRET}
+      - AUTH_ANON=true
+      - AUTH_GITHUB_CID=${REMARK42_GITHUB_CID} # OAuth2 client ID
+      - AUTH_GITHUB_CSEC=${REMARK42_GITHUB_CSEC} # OAuth2 client secret
+    volumes:
+      - remark42_data:/srv/var
+
 volumes:
   caddy_data:
   caddy_config:
   wakapi_data:
+  remark42_data:

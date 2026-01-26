@@ -5,3 +5,7 @@ inogai.com {
 wakapi.inogai.com {
   reverse_proxy wakapi:3000
 }
+
+remark42.inogai.com {
+  reverse_proxy remark42:8080
+}
