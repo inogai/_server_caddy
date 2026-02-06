@@ -1,11 +1,15 @@
 inogai.com {
-  redir https://www.{host}{uri}
+	redir https://www.{host}{uri}
 }
 
 wakapi.inogai.com {
-  reverse_proxy wakapi:3000
+	reverse_proxy wakapi:3000
 }
 
 remark42.inogai.com {
-  reverse_proxy remark42:8080
+	reverse_proxy remark42:8080
+}
+
+litellm.inogai.com {
+	reverse_proxy litellm:4000
 }

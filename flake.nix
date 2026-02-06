@@ -24,6 +24,7 @@
           packages = with pkgs; [
             caddy
             just
+            rsync
           ];
         };
       }
