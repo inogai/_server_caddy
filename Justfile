@@ -18,3 +18,7 @@ deploy:
 test-chrome:
   chromium --user-data-dir=/tmp/chrome-test-profile --host-resolver-rules="MAP *.inogai.com 127.0.0.1" "wakapi.inogai.com"
   rm -rf /tmp/chrome-test-profile
+
+download_backups:
+  rsync -avz -e "ssh -p ${REMOTE_PORT}" \
+    ${REMOTE_USER}@${REMOTE_HOST}:~/archive ./archive/

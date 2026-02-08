@@ -68,6 +68,16 @@ services:
       - ./litellm:/app/config
     command: ["--config", "/app/config/config.yaml"]
 
+  backup:
+    image: offen/docker-volume-backup:v2.47.0
+    restart: unless-stopped
+    volumes:
+      - wakapi_data:/backup/wakapi_data:ro
+      - remark42_data:/backup/remark42_data:ro
+      - litellm_db_data:/backup/remark42_db_data:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ${HOME}/archive:/archive
+
 volumes:
   caddy_data:
   caddy_config:
