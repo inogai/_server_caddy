@@ -68,6 +68,10 @@ services:
       - ./litellm:/app/config
     command: ["--config", "/app/config/config.yaml"]
 
+  noname-server:
+    image: inogai/noname-server:latest
+    restart: unless-stopped
+
   backup:
     image: offen/docker-volume-backup:v2.47.0
     restart: unless-stopped

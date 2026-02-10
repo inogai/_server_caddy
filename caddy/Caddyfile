@@ -13,3 +13,16 @@ remark42.inogai.com {
 litellm.inogai.com {
 	reverse_proxy litellm:4000
 }
+
+noname.inogai.com {
+	@websocket {
+		header Connection *Upgrade*
+		header Upgrade websocket
+	}
+	reverse_proxy @websocket noname-server:8082 # Serve websocket connections directly to the noname server
+	# reverse_proxy noname:<PORT> 	# TODO: host client on https
+
+noname-server.inogai.com {
+	reverse_proxy noname-server:8082 # Fall back for pure websocket connections
+}
+
