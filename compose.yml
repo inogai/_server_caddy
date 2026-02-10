@@ -68,6 +68,10 @@ services:
       - ./litellm:/app/config
     command: ["--config", "/app/config/config.yaml"]
 
+  noname:
+    image: ghcr.io/inogai/noname:latest
+    restart: unless-stopped
+
   noname-server:
     image: inogai/noname-server:latest
     restart: unless-stopped
